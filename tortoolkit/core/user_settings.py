@@ -25,7 +25,7 @@ no = "❌"
 yes = "✅"
 # Central object is not used its Acknowledged 
 tordb = TorToolkitDB()
-header =  '<b>TorToolKitX by <a href="https://github.com/XcodersHub/TorToolkitX">XcodersHub</a></b>\n<u>USER SETTINGS MENU - v1</u>'
+header =  '<u>USER SETTINGS MENU</u>'
 async def handle_user_setting_callback(e):
     db = tordb
     sender_id = str(e.sender_id)
@@ -38,7 +38,7 @@ async def handle_user_setting_callback(e):
     
     if cmd[-1] != sender_id:
         print("Sender id",sender_id," - - ",cmd[-1])
-        await e.answer("Dont touch sender dosent match.",alert=True)
+        await e.answer("Dont touch sender doesnt match.",alert=True)
         #await e.delete()
         return
     if cmd[1] == "mycmd":

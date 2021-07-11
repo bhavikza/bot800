@@ -35,7 +35,7 @@ p { font-size: 12px; margin: 24px;}
 </style>
 </head>
 <body>
-<h1>👇Select the Files that you want to Be downloaded from Below 👇</h1>
+<h2>Select the files to be downloaded below 👇</h2>
 <form action="{form_url}" method="POST">
 
 {My_content}
@@ -108,7 +108,7 @@ code_page = """
 <head>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 <title>
-TorToolKitX Torrent Files
+bot800
 </title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
@@ -117,8 +117,7 @@ TorToolKitX Torrent Files
 <form action="{form_url}">
   <div class="form-group">
     <label for="pin_code">Pin Code</label>
-    <input type="text" class="form-control" name="pin_code" placeholder="Enter code to access the torrent">
-    <small class="form-text text-muted">Dont mess around. You download will get messed up.</small>
+    <input type="text" class="form-control" name="pin_code" placeholder="Enter pin code from group to access the torrent files.">
   </div>
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
@@ -126,7 +125,7 @@ TorToolKitX Torrent Files
 </body>
 </html>
 """
-
+#<small class="form-text text-muted">Dont mess around. You download will get messed up.</small>
 
 @routes.get('/tortk/files/{hash_id}')
 async def list_torrent_contents(request):
@@ -271,18 +270,18 @@ async def set_priority(request):
 
 @routes.get('/')
 async def homepage(request):
-    return web.Response(text="<h1>🤗TorToolkitX webserver is Up and Running successfully🟢</h1>\n\n⚡See TorTookitX on <a href=\"https://github.com/XcodersHub/TorToolkitX\">@GitHub</a>\n\n🐱‍💻Join XcodersHub <a href=\"https://t.me/XcodersHub\">TG channel</a>",content_type="text/html")
+    return web.Response(text="<h1>bot800 webserver running successfully🟢</h1>",content_type="text/html")
 
 async def e404_middleware(app, handler):
   async def middleware_handler(request):
       try:
           response = await handler(request)
           if response.status == 404:
-              return web.Response(text="<h1>404: Page not found</h2><br><h3>TorToolKitX</h3>",content_type="text/html")
+              return web.Response(text="<h1>404: Page not found</h2><br><h3>bot800</h3>",content_type="text/html")
           return response
       except web.HTTPException as ex:
           if ex.status == 404:
-              return web.Response(text="<h1>404: Page not found</h2><br><h3>TorToolKitX</h3>",content_type="text/html")
+              return web.Response(text="<h1>404: Page not found</h2><br><h3>bot800</h3>",content_type="text/html")
           raise
   return middleware_handler
 
