@@ -256,7 +256,7 @@ async def get_value(e,file=False,photo=False):
     # this function gets the new value to be set from the user in current context
     lis = [False,None]
 
-    #func tools works as expected ;);)    
+    #func tools works as expected    
     cbak = partial(val_input_callback,o_sender=e.sender_id,lis=lis,file=file,photo=photo)
     
     e.client.add_event_handler(
@@ -360,7 +360,7 @@ async def get_bool_variable(var_name,msg,menu,callback_name,sender_id):
     except:
         val = False
     if val:
-        #setting the value in callback so calls will be reduced ;)
+        #setting the value in callback so calls will be reduced
         menu.append(
             [KeyboardButtonCallback(yes+msg,f"usettings {callback_name} false {sender_id}".encode("UTF-8"))]
         ) 

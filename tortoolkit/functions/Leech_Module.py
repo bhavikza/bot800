@@ -23,7 +23,7 @@ from .. import transfer
 logging.getLogger("telethon").setLevel(logging.WARNING)
 torlog = logging.getLogger(__name__)
 
-#this files main task is to keep the ability to switch to a new engine if needed ;)
+#this files main task is to keep the ability to switch to a new engine if needed
 
 #TODO major clean up in leech module.
 

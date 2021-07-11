@@ -40,7 +40,7 @@ p { font-size: 12px; margin: 24px;}
 
 {My_content}
 
-<input type="submit" name="Select these files ;)">
+<input type="submit" name="Select these files">
 </form>
 
 <script>

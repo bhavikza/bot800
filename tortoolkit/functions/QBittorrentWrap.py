@@ -36,10 +36,10 @@ async def get_client(host=None,port=None,uname=None,passw=None,retry=2) -> qba.T
 
     client = qba.Client(host=host,port=port,username=uname,password=passw)
     
-    #try to connect to the server :)
+    #try to connect to the server
     try:
         await aloop.run_in_executor(None,client.auth_log_in)
-        torlog.info("Client connected successfully to the torrent server. :)")
+        torlog.info("Client connected successfully to the torrent server.")
         await aloop.run_in_executor(None,client.application.set_preferences,{"disk_cache":20,"incomplete_files_ext":True,"max_connec":3000,"max_connec_per_torrent":300,"async_io_threads":6})
         torlog.debug("Setting the cache size to 20 incomplete_files_ext:True,max_connec:3000,max_connec_per_torrent:300,async_io_threads:6")
         return client
@@ -112,7 +112,7 @@ async def add_torrent_magnet(magnet,message):
         else:
             await message.edit("This is an unsupported/invalid link.")
     except qba.UnsupportedMediaType415Error as e:
-        #will not be used ever ;)
+        #will not be used ever
         torlog.error("Unsupported file was detected in the magnet here")
         await message.edit("This is an unsupported/invalid link.")
         return False
@@ -174,7 +174,7 @@ async def add_torrent_file(path,message):
         else:
             await message.edit("This is an unsupported/invalid link.")
     except qba.UnsupportedMediaType415Error as e:
-        #will not be used ever ;)
+        #will not be used ever
         torlog.error("Unsupported file was detected in the magnet here")
         await message.edit("This is an unsupported/invalid link.")
         return False
@@ -200,7 +200,7 @@ async def update_progress(client,message,torrent,task,except_retry=0,sleepsec=No
         else:
             task.cancel = True
             await task.set_inactive()
-            await message.edit("Torrent canceled ```{}``` ".format(torrent.name),buttons=None)
+            await message.edit("Torrent cancelled ```{}``` ".format(torrent.name),buttons=None)
             return True
         
         if tor_info.size > (get_val("MAX_TORRENT_SIZE") * 1024 * 1024 * 1024):
@@ -395,7 +395,7 @@ async def register_torrent(entity,message,user_msg=None,magnet=False,file=False)
             return False
         torlog.info(torrent)
         if torrent.progress == 1 and torrent.completion_on > 1:
-            await message.edit("The provided torrent was already completly downloaded.")
+            await message.edit("The provided torrent was already downloaded.")
             return True
         else:
             
@@ -437,7 +437,7 @@ async def register_torrent(entity,message,user_msg=None,magnet=False,file=False)
         torlog.info(torrent)
         
         if torrent.progress == 1:
-            await message.edit("The provided torrent was already completly downloaded.")
+            await message.edit("The provided torrent was already downloaded.")
             return True
         else:
             pincode = randint(1000,9999)

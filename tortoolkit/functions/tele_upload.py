@@ -4,7 +4,7 @@
 
 import os,logging,time,traceback,shutil, asyncio
 from ..core.getVars import get_val
-from ..core import thumb_manage # i guess i will dodge this one ;) as i am importing the vids helper anyways
+from ..core import thumb_manage # i guess i will dodge this one as i am importing the vids helper anyways
 from . import vids_helpers,zip7_utils
 from .progress_for_telethon import progress
 from hachoir.parser import createParser
@@ -82,7 +82,7 @@ async def upload_handel(path,message,from_uid,files_dict,job_id=0,force_edit=Fal
             if updb.get_cancel_status(message.chat_id,message.id):
                 task.cancel = True
                 await task.set_inactive()
-                await message.edit("{} - Canceled By user.".format(message.text),buttons=None)
+                await message.edit("{} - Cancelled By user.".format(message.text),buttons=None)
             else:
                 await message.edit(buttons=None)
             updb.deregister_upload(message.chat_id,message.id)
@@ -90,7 +90,7 @@ async def upload_handel(path,message,from_uid,files_dict,job_id=0,force_edit=Fal
     else:
         logging.info("Uploading the file:- {}".format(path))
         if os.path.getsize(path) > get_val("TG_UP_LIMIT"):
-            # the splitted file will be considered as a single upload ;)
+            # the splitted file will be considered as a single upload
             
             
             metadata = extractMetadata(createParser(path))
@@ -165,7 +165,7 @@ async def upload_handel(path,message,from_uid,files_dict,job_id=0,force_edit=Fal
                 if updb.get_cancel_status(message.chat_id,message.id):
                     task.cancel = True
                     await task.set_inactive()
-                    await message.edit("{} - Canceled By user.".format(message.text),buttons=None)
+                    await message.edit("{} - Cancelled By user.".format(message.text),buttons=None)
                 else:
                     await message.edit(buttons=None)
                 updb.deregister_upload(message.chat_id,message.id)
@@ -208,7 +208,7 @@ async def upload_handel(path,message,from_uid,files_dict,job_id=0,force_edit=Fal
                 if updb.get_cancel_status(message.chat_id,message.id):
                     task.cancel = True
                     await task.set_inactive()
-                    await message.edit("{} - Canceled By user.".format(message.text),buttons=None)
+                    await message.edit("{} - Cancelled By user.".format(message.text),buttons=None)
                 else:
                     await message.edit(buttons=None)
                 updb.deregister_upload(message.chat_id,message.id)
@@ -388,7 +388,7 @@ async def upload_a_file(path,message,force_edit,database=None,thumb_path=None,us
                     )
     except Exception as e:
         if str(e).find("cancel") != -1:
-            torlog.info("Canceled an upload lol")
+            torlog.info("Cancelled an upload lol")
             await msg.edit(f"Failed to upload {e}", buttons=None)
         else:
             torlog.exception("In Tele Upload")
@@ -646,7 +646,7 @@ async def upload_single_file(path, message, force_edit,database=None,thumb_image
                 os.remove(thumb)
     except Exception as e:
         if str(e).find("cancel") != -1:
-            torlog.info("Canceled an upload lol")
+            torlog.info("Cancelled an upload lol")
             try:
                 await message_for_progress_display.edit(f"Failed to upload {e}")
             except:pass

@@ -183,8 +183,8 @@ async def check_progress_for_dl(aria2, gid, event, previous_message, task, rdept
             else:
                 msg = file.error_message
                 await event.edit(f"`{msg}`",parse_mode="html", buttons=None)
-                torlog.error(f"The aria download faild due to this reason:- {msg}")
-                return False, f"The aria download faild due to this reason:- {msg}"
+                torlog.error(f"The aria download failed due to: {msg}")
+                return False, f"The aria download failed due to: {msg}"
             await asyncio.sleep(get_val("EDIT_SLEEP_SECS"))
             
             # TODO idk not intrested in using recursion here
@@ -202,9 +202,9 @@ async def check_progress_for_dl(aria2, gid, event, previous_message, task, rdept
             except:pass
             task.cancel = True
             await task.set_inactive()
-            return False, f"The Download was canceled. {fname}"
+            return False, f"The Download was cancelled. {fname}"
         else:
-            torlog.warning("Errored due to ta client error.")
+            torlog.warning("Error due to client error.")
         pass
     except MessageNotModifiedError:
         pass
@@ -214,7 +214,7 @@ async def check_progress_for_dl(aria2, gid, event, previous_message, task, rdept
     except Exception as e:
         torlog.info(str(e))
         if " not found" in str(e) or "'file'" in str(e):
-            return False, "The Download was canceled."
+            return False, "The Download was cancelled."
         else:
             torlog.warning(str(e))
             return False, f"Error: {str(e)}"

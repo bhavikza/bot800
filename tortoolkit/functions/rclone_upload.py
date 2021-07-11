@@ -72,11 +72,11 @@ async def rclone_upload(path,message,user_msg,dest_drive,dest_base,edit_time,con
         rcres = await rclone_process_display(rclone_pr,edit_time,msg, message, omsg, task)
         
         if rcres is False:
-            await message.edit(message.text + "\nCanceled Rclone Upload")
+            await message.edit(message.text + "\nCancelled Rclone Upload")
             await msg.delete()
             rclone_pr.kill()
             task.cancel = True
-            await task.set_inactive("Canceled Rclone Upload")
+            await task.set_inactive("Cancelled Rclone Upload")
             return task
             
 
@@ -124,11 +124,11 @@ async def rclone_upload(path,message,user_msg,dest_drive,dest_base,edit_time,con
         rcres = await rclone_process_display(rclone_pr,edit_time,msg, message, omsg, task)
         
         if rcres is False:
-            await message.edit(message.text + "\nCanceled Rclone Upload")
+            await message.edit(message.text + "\nCancelled Rclone Upload")
             await msg.delete()
             rclone_pr.kill()
             task.cancel = True
-            await task.set_inactive("Canceled Rclone Upload")
+            await task.set_inactive("Cancelled Rclone Upload")
             return task
 
         torlog.info("Upload complete")

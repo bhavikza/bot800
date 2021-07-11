@@ -438,12 +438,12 @@ async def handle_upcancel_cb(e):
 
     if str(e.sender_id) == data[3]:
         db.cancel_download(data[1],data[2])
-        await e.answer("Upload has been canceled ;)",alert=True)
+        await e.answer("Upload has been cancelled",alert=True)
     elif e.sender_id in get_val("ALD_USR"):
         db.cancel_download(data[1],data[2])
-        await e.answer("UPLOAD CANCELED IN ADMIN MODE XD ;)",alert=True)
+        await e.answer("UPLOAD CANCELED IN ADMIN MODE",alert=True)
     else:
-        await e.answer("Can't Cancel others upload 😡",alert=True)
+        await e.answer("Can't cancel others upload",alert=True)
 
 
 async def callback_handler_canc(e):
@@ -476,7 +476,7 @@ async def callback_handler_canc(e):
         torlog.info(f"Hashid :- {hashid}")
 
         await cancel_torrent(hashid, is_aria, is_mega)
-        await e.answer("Leech has been canceled ;)",alert=True)
+        await e.answer("Leech has been cancelled",alert=True)
     elif e.sender_id in get_val("ALD_USR"):
         hashid = data[1]
         hashid = hashid.strip("'")
@@ -484,7 +484,7 @@ async def callback_handler_canc(e):
         torlog.info(f"Hashid :- {hashid}")
         
         await cancel_torrent(hashid, is_aria, is_mega)
-        await e.answer("Leech has been canceled in ADMIN MODE XD ;)",alert=True)
+        await e.answer("Leech has been cancelled in ADMIN MODE XD",alert=True)
     else:
         await e.answer("Can't Cancel others leech 😡", alert=True)
 
@@ -761,7 +761,7 @@ async def about_me(message):
     diff = Human_Format.human_readable_timedelta(diff)
 
     msg = (
-        "<b>Name</b>: <code>TorToolkitX-Heroku</code>\n"
+        "<b>Name</b>: <code>Heroku</code>\n"
         f"<b>Version</b>: <code>{__version__}</code>\n"
         f"<b>Telethon Version</b>: {telever}\n"
         f"<b>Pyrogram Version</b>: {pyrover}\n"
@@ -819,7 +819,7 @@ async def set_thumb_cmd(e):
         os.remove(value)
     except Exception:
         torlog.exception("Set Thumb")
-        await e.reply("Errored in setting thumbnail.")
+        await e.reply("Error in setting thumbnail.")
         return
     
     try:
