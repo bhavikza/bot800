@@ -14,7 +14,6 @@ except ImportError:pass
 from tortoolkit.ttk_client import TortkClient
 
 if __name__ == "__main__":
-
     #logging stuff
     #thread name is just kept for future use
     logging.basicConfig(
@@ -38,13 +37,13 @@ if __name__ == "__main__":
     ttkbot.queue = queue
     ttkbot.exqueue = exqueue
     ttkbot.start(bot_token=get_val("BOT_TOKEN"))
-    logging.info("Telethon Client created.")
+    logging.info("----Telethon Client created----")
 
     # Pyro Client creation and linking
     pyroclient = Client("pyrosession", api_id=get_val("API_ID"), api_hash=get_val("API_HASH"), bot_token=get_val("BOT_TOKEN"), workers=343)
     pyroclient.start()
     ttkbot.pyro = pyroclient
-    logging.info("Pryogram Client created.")
+    logging.info("----Pryogram Client created----")
 
     # Associate the handlers
     add_handlers(ttkbot)
@@ -57,6 +56,6 @@ if __name__ == "__main__":
         ttkbot.loop.run_until_complete(get_rstuff())
     except:pass
     
-    logging.info("THE BOT IS READY TO GOOOOOOO")
+    logging.info("----BOT IS READY----")
 
     ttkbot.run_until_disconnected()
