@@ -213,7 +213,7 @@ class ARTask(Status):
 
     async def create_message(self):
         # Getting the vars pre handed
-        #downloading_dir_name = "N/A"
+        downloading_dir_name = "N/A"
         try:
             downloading_dir_name = str(self._dl_file.name)
         except:
