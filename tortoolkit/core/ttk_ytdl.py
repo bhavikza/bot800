@@ -225,8 +225,8 @@ async def handle_ytdl_callbacks(e: MessageLike):
                         buttons.append([KeyboardButtonCallback(text,cdata.encode("UTF-8"))])
                         j+=1
                 
-                buttons.append([KeyboardButtonCallback("Go Back 😒",f"ytdlmmenu|{data[2]}|{data[3]}|{data[4]}")])
-                await e.edit(f"Files for quality {data[1]}, at the end it is the Video Codec. Mostly prefer the last one with you desired extension if you want streamable video. Try rest if you want.",buttons=buttons)
+                buttons.append([KeyboardButtonCallback("Go Back",f"ytdlmmenu|{data[2]}|{data[3]}|{data[4]}")])
+                await e.edit(f"Selected {data[1]}. Starting soon...",buttons=buttons)
                 
 
 
